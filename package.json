@@ -83,6 +83,7 @@
     "tslint": "^5.10.0",
     "typescript": "^2.9.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
+    "unfetch": "^3.0.0",
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.3",
     "webpack-dev-middleware": "^3.1.3",

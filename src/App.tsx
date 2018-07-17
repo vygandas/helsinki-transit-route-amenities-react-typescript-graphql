@@ -4,8 +4,8 @@ import "assets/scss/App.scss";
 import store from "./store";
 import {Provider} from "react-redux";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import FrontDoorPage from "./views/FrontDoor/index";
-import AmenitiesPage from "./views/Amenities/index";
+import FrontDoorPage from "./views/FrontDoor";
+import AmenitiesPage from "./views/Amenities";
 
 import Header from "./views/partial/Header";
 
