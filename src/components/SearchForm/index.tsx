@@ -5,10 +5,11 @@ import { debounce } from "throttle-debounce";
 import {getStreetSuggestions} from "../../actions/search.actions";
 import {IAutoCompleteResponse} from "../../interfaces/IAutoCompleteResponse";
 import {TAutoCompleteFeature} from "../../types/TAutoCompleteFeature";
+import {IAmenitiesState} from "../../interfaces/IAmenitiesState";
 
 export interface SearchFormComponentProps {
     search_input: string;
-    autocomplete: IAutoCompleteResponse<TAutoCompleteFeature>
+    autocomplete?: IAutoCompleteResponse<TAutoCompleteFeature>
     getStreetSuggestions: typeof getStreetSuggestions;
 }
 
@@ -49,10 +50,12 @@ class SearchFormComponent extends React.Component<SearchFormComponentProps, Sear
     }
 }
 
+const mapStateToProps = (state: IAmenitiesState) => ({
+    search_input: state.search_input,
+    autocomplete: state.autocomplete
+});
+
 export default connect(
-    state => ({
-        search_input: state.amenities.search_input,
-        autocomplete: state.amenities.autocomplete
-    }),
+    mapStateToProps,
     {getStreetSuggestions}
 )(SearchFormComponent);

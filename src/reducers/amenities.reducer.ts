@@ -1,7 +1,8 @@
 import { IAmenitiesState } from "../interfaces/IAmenitiesState";
 
 export const initialState: IAmenitiesState = {
-    search_input: ""
+    search_input: "",
+    autocomplete: null
 };
 
 export const amenities = (state: IAmenitiesState = initialState, action): IAmenitiesState => {
