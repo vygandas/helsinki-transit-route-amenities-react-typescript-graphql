@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./Header.scss";
 
-const background = require("assets/img/helsinki.jpg");
+const background = require("assets/img/helsinki.png");
 
 import SearchForm from "../../../components/SearchForm";
 
@@ -12,9 +12,6 @@ interface HeaderPartialState {
 }
 
 class HeaderPartial extends React.Component<HeaderPartialProps, HeaderPartialState> {
-    constructor(props: HeaderPartialProps) {
-        super(props);
-    }
     render(): JSX.Element {
         return (
             <div className="container-fluid header-partial" style={{ backgroundImage: `url('${background}')` }}>
