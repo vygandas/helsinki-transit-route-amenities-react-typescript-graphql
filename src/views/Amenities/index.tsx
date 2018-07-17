@@ -4,8 +4,8 @@ import "./Amenities.scss";
 import { ISelectedAddress } from "../../interfaces/ISelectedAddress";
 import { setSelectedAddress } from "../../actions/search.actions";
 import { IAmenitiesState } from "../../interfaces/IAmenitiesState";
-import { Query } from "react-apollo";
 import { GET_AMENITIES } from "../../queries";
+import QueryAmenities from "../../queries/QueryAmenities";
 
 export interface AmenitiesPageProps {
     match: { params?: {
@@ -44,19 +44,19 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
                                 Amenities at {this.props.match.params.address}
                             </h1>
                             {this.props.selected &&
-                            <Query
+                            <QueryAmenities
                                 query={GET_AMENITIES}
                                 variables={{ lat: this.props.selected.lat, lon: this.props.selected.lon }}
                             >
                                 {({ loading, error, data }) => {
                                     if (loading) return <div>Loading...</div>;
                                     if (error) return <div>Error :(</div>;
-
+                                    console.log("data", data.bikeParkings);
                                     return (
                                         <div>data</div>
                                     );
                                 }}
-                            </Query>
+                            </QueryAmenities>
                             }
                         </div>
                     </div>
