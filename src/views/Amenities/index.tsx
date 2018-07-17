@@ -6,6 +6,7 @@ import { setSelectedAddress } from "../../actions/search.actions";
 import { IAmenitiesState } from "../../interfaces/IAmenitiesState";
 import { GET_AMENITIES } from "../../queries";
 import QueryAmenities from "../../queries/QueryAmenities";
+import AmenitiesMapComponent from "../../components/AmenitiesMap";
 
 export interface AmenitiesPageProps {
     match: { params?: {
@@ -53,7 +54,10 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
                                     if (error) return <div>Error :(</div>;
                                     console.log("data", data.bikeParkings);
                                     return (
-                                        <div>data</div>
+                                        <AmenitiesMapComponent
+                                            address={this.props.selected}
+                                            amenities={data}
+                                        />
                                     );
                                 }}
                             </QueryAmenities>
