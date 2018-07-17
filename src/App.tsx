@@ -9,7 +9,9 @@ export default class App extends React.Component<AppProps, undefined> {
         return (
             <div className="row">
                 <div className="col-12">
-                    Hello
+                    <div className="app-component">
+                        Hello
+                    </div>
                 </div>
             </div>
         );
