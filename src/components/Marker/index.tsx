@@ -28,6 +28,7 @@ export const Marker = (props: MarkerProps) => {
     return (
         <div className="marker-component">
             {getMarkerImage(props.type)}
+            <span>{props.text}m</span>
         </div>
     );
 }

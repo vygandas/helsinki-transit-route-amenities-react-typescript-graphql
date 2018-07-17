@@ -40,7 +40,7 @@ class AmenitiesMapComponent extends React.Component<AmenitiesMapComponentProps, 
                         <Marker
                             lat={parseFloat(node.node.place.lat.toString())}
                             lng={parseFloat(node.node.place.lon.toString())}
-                            text={`Distance: ${node.node.distance.toString()}`}
+                            text={`Stop ${node.node.distance.toString()}`}
                             type="s"
                         />
                     ))}
@@ -48,7 +48,7 @@ class AmenitiesMapComponent extends React.Component<AmenitiesMapComponentProps, 
                         <Marker
                             lat={parseFloat(node.node.place.lat.toString())}
                             lng={parseFloat(node.node.place.lon.toString())}
-                            text={`Distance: ${node.node.distance.toString()}`}
+                            text={`Bike rental ${node.node.distance.toString()}`}
                             type="r"
                         />
                     ))}
@@ -56,7 +56,7 @@ class AmenitiesMapComponent extends React.Component<AmenitiesMapComponentProps, 
                         <Marker
                             lat={parseFloat(node.node.place.lat.toString())}
                             lng={parseFloat(node.node.place.lon.toString())}
-                            text={`Distance: ${node.node.distance.toString()}`}
+                            text={`Bike parking ${node.node.distance.toString()}`}
                             type="b"
                         />
                     ))}
@@ -64,7 +64,7 @@ class AmenitiesMapComponent extends React.Component<AmenitiesMapComponentProps, 
                         <Marker
                             lat={parseFloat(node.node.place.lat.toString())}
                             lng={parseFloat(node.node.place.lon.toString())}
-                            text={`Distance: ${node.node.distance.toString()}`}
+                            text={`Car parking ${node.node.distance.toString()}`}
                             type="p"
                         />
                     ))}
