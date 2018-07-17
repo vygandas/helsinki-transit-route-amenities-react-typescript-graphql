@@ -1,3 +1,3 @@
 export interface IAutoCompleteResponse<T> {
-    features: T[]
+    features: T[] | null
 }

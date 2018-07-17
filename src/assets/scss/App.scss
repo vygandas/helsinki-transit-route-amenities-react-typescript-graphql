@@ -27,5 +27,5 @@ button {
 
 .btn,
 .form-control {
-  @include rounded("0");
+  @include rounded(0);
 }

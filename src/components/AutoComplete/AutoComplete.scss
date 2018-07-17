@@ -1,0 +1,17 @@
+.autocomplete-component {
+  position: absolute;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  background: white;
+  margin-top: -17px;
+  border: thin solid #ced4da;
+  z-index: 1000;
+  cursor: pointer;
+
+  li {
+    &:hover {
+      background-color: #f2f5f8;
+    }
+  }
+}

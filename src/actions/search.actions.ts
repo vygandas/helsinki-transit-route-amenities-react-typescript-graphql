@@ -1,4 +1,4 @@
-import {GET_AUTO_COMPLETE_SUGGESTIONS_LIST, SHOW_ERROR} from "./types";
+import {GET_AUTO_COMPLETE_SUGGESTIONS_LIST, SHOW_ERROR, CLEAR_AUTO_COMPLETE_SUGGESTIONS_LIST} from "./types";
 import axios from "axios";
 import {API_AUTO_COMPLETE_URL} from "../config/api.config";
 import {stringify} from "querystring";
@@ -6,7 +6,7 @@ import {AxiosPromise} from "axios";
 import {IAutoCompleteResponse} from "../interfaces/IAutoCompleteResponse";
 import {TAutoCompleteFeature} from "../types/TAutoCompleteFeature";
 
-export function getStreetSuggestions(text: string) {
+export const getStreetSuggestions = (text: string) => {
     return dispatch => {
         axios.get(`${API_AUTO_COMPLETE_URL}&${stringify({ text })}`)
             .then(response => dispatch({
@@ -19,3 +19,8 @@ export function getStreetSuggestions(text: string) {
             }));
     };
 }
+
+export const clearStreetSuggestions = () => dispatch => dispatch({
+    type: CLEAR_AUTO_COMPLETE_SUGGESTIONS_LIST,
+    payload: null
+});
