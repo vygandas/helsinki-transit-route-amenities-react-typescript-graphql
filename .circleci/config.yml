@@ -19,6 +19,8 @@ jobs:
     steps:
       - checkout
 
+      - run: apt-get install nasm
+
       # Download and cache dependencies
       - restore_cache:
           keys:
