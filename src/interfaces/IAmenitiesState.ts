@@ -1,7 +1,8 @@
 import {TAutoCompleteFeature} from "../types/TAutoCompleteFeature";
 import {IAutoCompleteResponse} from "./IAutoCompleteResponse";
+import { ISelectedAddress } from "./ISelectedAddress";
 
 export interface IAmenitiesState {
-    search_input: string;
+    selected: ISelectedAddress;
     autocomplete?: IAutoCompleteResponse<TAutoCompleteFeature>
 }

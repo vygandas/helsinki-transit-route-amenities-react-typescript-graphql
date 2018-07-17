@@ -2,39 +2,60 @@ import * as React from "react";
 import {connect} from "react-redux";
 import "./SearchForm.scss";
 import { debounce } from "throttle-debounce";
-import {getStreetSuggestions, clearStreetSuggestions} from "../../actions/search.actions";
+import {getStreetSuggestions, clearStreetSuggestions, setSelectedAddress} from "../../actions/search.actions";
 import {IAutoCompleteResponse} from "../../interfaces/IAutoCompleteResponse";
 import {TAutoCompleteFeature} from "../../types/TAutoCompleteFeature";
 import {IAmenitiesState} from "../../interfaces/IAmenitiesState";
 import {AutoCompleteComponent} from "../AutoComplete/index";
+import { ISelectedAddress } from "../../interfaces/ISelectedAddress";
 
 export interface SearchFormComponentProps {
-    search_input: string;
+    selected: ISelectedAddress;
     autocomplete?: IAutoCompleteResponse<TAutoCompleteFeature>
     getStreetSuggestions: typeof getStreetSuggestions;
     clearStreetSuggestions: typeof clearStreetSuggestions;
+    setSelectedAddress: typeof setSelectedAddress;
 }
 
 interface SearchFormComponentState {
+    isAddressSelected: boolean;
+    inputValue: string;
 }
 
 class SearchFormComponent extends React.Component<SearchFormComponentProps, SearchFormComponentState> {
     private getAutoCompleteDebounced;
     constructor(props: SearchFormComponentProps) {
         super(props);
-        this.getAutoCompleteDebounced = debounce(500, false, this.getAutoComplete);
+        this.state = {
+            isAddressSelected: false,
+            inputValue: ''
+        };
+        this.getAutoCompleteDebounced = debounce(300, false, this.getAutoComplete);
     }
-    getAutoComplete(text: string): void {
+    getAutoComplete = (text: string): void => {
         console.log("text", text);
         console.log("SearchFormComponent this.props", this.props);
         if (text !== null && text.length > 0) {
             this.props.getStreetSuggestions(text);
         } else {
-            this.props.clearStreetSuggestions();
+            this.clearSuggestionsHandler();
         }
     }
+    clearSuggestionsHandler = () => {
+        this.setState({
+            isAddressSelected: false
+        });
+        this.props.clearStreetSuggestions();
+    }
+    selectSuggestionHandler = (suggestion: ISelectedAddress) => {
+        this.setState({
+            isAddressSelected: true,
+            inputValue: suggestion.address
+        });
+        this.props.setSelectedAddress(suggestion);
+        this.props.clearStreetSuggestions();
+    }
     render(): JSX.Element {
-        console.log("search_input", this.props.search_input);
         return (
             <div className="search-form-component">
                 <div className="input-group mb-3">
@@ -43,18 +64,24 @@ class SearchFormComponent extends React.Component<SearchFormComponentProps, Sear
                         minLength={2}
                         className="form-control p-3"
                         placeholder="Street address..."
-                        onChange={event => this.getAutoCompleteDebounced(event.target.value)}
+                        onChange={event => {
+                            this.setState({ isAddressSelected: false, inputValue: event.target.value });
+                            this.getAutoCompleteDebounced(event.target.value);
+                        }}
+                        value={this.state.inputValue}
                     />
                     <div className="input-group-append">
                         <button
                             className="btn btn-primary"
                             type="button"
+                            disabled={!this.state.isAddressSelected}
                         >Search</button>
                     </div>
                 </div>
                 <AutoCompleteComponent
                     autocomplete={this.props.autocomplete}
-                    clearHandler={this.props.clearStreetSuggestions}
+                    clearHandler={this.clearSuggestionsHandler}
+                    onSelectHandler={this.selectSuggestionHandler}
                 />
             </div>
         );
@@ -62,11 +89,11 @@ class SearchFormComponent extends React.Component<SearchFormComponentProps, Sear
 }
 
 const mapStateToProps = (state: { amenities: IAmenitiesState }) => ({
-    search_input: state.amenities.search_input,
+    selected: state.amenities.selected,
     autocomplete: state.amenities.autocomplete
 });
 
 export default connect(
     mapStateToProps,
-    {getStreetSuggestions, clearStreetSuggestions}
+    {getStreetSuggestions, clearStreetSuggestions, setSelectedAddress}
 )(SearchFormComponent);
