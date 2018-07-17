@@ -1,5 +1,7 @@
 # Helsinki Transit Route Amenities
 
+[![CircleCI](https://circleci.com/gh/vygandas/helsinki-transit-route-amenities-react-typescript-graphql/tree/master.svg?style=svg)](https://circleci.com/gh/vygandas/helsinki-transit-route-amenities-react-typescript-graphql/tree/master)
+
 Website is deployed with CI here https://agitated-lovelace-bc6fda.netlify.com/ 
 
 ## Task
