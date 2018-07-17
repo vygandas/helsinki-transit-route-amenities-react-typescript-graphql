@@ -1,4 +1,13 @@
 .search-form-component {
   position: relative;
   max-width: 500px;
+
+  .btn {
+    display: block;
+    padding-top: 16px;
+  }
+
+  .link-disabled {
+    cursor: no-drop !important;
+  }
 }
