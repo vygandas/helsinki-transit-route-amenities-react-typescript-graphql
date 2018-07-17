@@ -17,3 +17,15 @@ body {
 .db {
   display: block;
 }
+
+textarea,
+select,
+input,
+button {
+  outline: none;
+}
+
+.btn,
+.form-control {
+  @include rounded("0");
+}

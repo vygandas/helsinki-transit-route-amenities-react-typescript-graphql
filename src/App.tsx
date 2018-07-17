@@ -7,26 +7,25 @@ import { HashRouter, Switch, Route, IndexRoute } from "react-router-dom";
 import FrontDoorPage from "./views/FrontDoor/index";
 import AmenitiesPage from "./views/Amenities/index";
 
+import Header from "./views/partial/Header";
+
 export interface AppProps {
 }
 
 export default class App extends React.Component<AppProps, undefined> {
     render(): JSX.Element {
         return (
-            <div className="row">
-                <div className="col-12">
-                    <Provider store={store}>
-                        <div className="app-component">
-                            <HashRouter>
-                                <Switch>
-                                    <Route exact path="/" component={FrontDoorPage}/>
-                                    <Route path="/:location" component={AmenitiesPage}/>
-                                </Switch>
-                            </HashRouter>
-                        </div>
-                    </Provider>
+            <Provider store={store}>
+                <div className="app-component">
+                    <Header/>
+                    <HashRouter>
+                        <Switch>
+                            <Route exact path="/" component={FrontDoorPage}/>
+                            <Route path="/:location" component={AmenitiesPage}/>
+                        </Switch>
+                    </HashRouter>
                 </div>
-            </div>
+            </Provider>
         );
     }
 }

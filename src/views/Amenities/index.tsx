@@ -14,10 +14,16 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
     }
     render(): JSX.Element {
         return (
-            <div className="amenities-page text-center p-5">
-                <h1 className="display-1">
-                    Amenities at {this.props.match.params.location}
-                </h1>
+            <div class="container">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="amenities-page text-center p-5">
+                            <h1 className="display-1">
+                                Amenities at {this.props.match.params.location}
+                            </h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
