@@ -22,8 +22,8 @@ class AutoCompleteBaseComponent extends React.Component<AutoCompleteComponentPro
     clickHandler = (feature: TAutoCompleteFeature) => {
         const selected: ISelectedAddress = {
             address: feature.properties.label,
-            lat: feature.geometry.coordinates[0],
-            lon: feature.geometry.coordinates[1]
+            lon: feature.geometry.coordinates[0],
+            lat: feature.geometry.coordinates[1]
         };
         this.props.onSelectHandler(selected);
     }

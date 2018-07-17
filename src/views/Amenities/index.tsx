@@ -4,6 +4,8 @@ import "./Amenities.scss";
 import { ISelectedAddress } from "../../interfaces/ISelectedAddress";
 import { setSelectedAddress } from "../../actions/search.actions";
 import { IAmenitiesState } from "../../interfaces/IAmenitiesState";
+import { Query } from "react-apollo";
+import { GET_AMENITIES } from "../../queries";
 
 export interface AmenitiesPageProps {
     match: { params?: {
@@ -23,6 +25,7 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
         super(props);
     }
     componentWillMount(): void {
+        console.log("this.props.match.params", this.props.match.params);
         if (this.props.selected === null) {
             this.props.setSelectedAddress({
                 address: this.props.match.params.address,
@@ -36,10 +39,25 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <div className="amenities-page text-center p-5">
-                            <h1 className="display-1">
+                        <div className="amenities-page p-5">
+                            <h1 className="h4">
                                 Amenities at {this.props.match.params.address}
                             </h1>
+                            {this.props.selected &&
+                            <Query
+                                query={GET_AMENITIES}
+                                variables={{ lat: this.props.selected.lat, lon: this.props.selected.lon }}
+                            >
+                                {({ loading, error, data }) => {
+                                    if (loading) return <div>Loading...</div>;
+                                    if (error) return <div>Error :(</div>;
+
+                                    return (
+                                        <div>data</div>
+                                    );
+                                }}
+                            </Query>
+                            }
                         </div>
                     </div>
                 </div>
