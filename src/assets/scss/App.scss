@@ -1,0 +1,19 @@
+@import "variables";
+@import "mixins";
+
+body {
+  background-color: $background_main_color;
+  font-family: 'Raleway', arial, sans-serif;
+}
+
+.text-shadow-md {
+  @include text-shadow(0, 0, 10px, rgba(0, 0, 0, 0.35));
+}
+
+.box-shadow-md {
+  @include box-shadow(0, 0, 30px, rgba(0, 0, 0, 0.4));
+}
+
+.db {
+  display: block;
+}
