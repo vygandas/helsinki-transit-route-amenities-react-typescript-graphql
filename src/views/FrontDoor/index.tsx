@@ -13,7 +13,7 @@ class FrontDoorPage extends React.Component<FrontDoorPageProps, FrontDoorPageSta
     }
     render(): JSX.Element {
         return (
-            <div class="container">
+            <div className="container">
                 <div className="row">
                     <div className="col-12">
                         <div className="fd-page text-center p-5">

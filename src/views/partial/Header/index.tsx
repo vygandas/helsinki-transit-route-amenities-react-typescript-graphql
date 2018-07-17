@@ -17,7 +17,7 @@ class HeaderPartial extends React.Component<HeaderPartialProps, HeaderPartialSta
     }
     render(): JSX.Element {
         return (
-            <div class="container-fluid header-partial" style={{ backgroundImage: `url('${background}')` }}>
+            <div className="container-fluid header-partial" style={{ backgroundImage: `url('${background}')` }}>
                 <div className="row">
                     <div className="col-12">
                         <div className="container">
