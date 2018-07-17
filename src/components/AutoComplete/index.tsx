@@ -16,7 +16,6 @@ class AutoCompleteBaseComponent extends React.Component<AutoCompleteComponentPro
         super(props);
     }
     handleClickOutside = event => {
-        console.log('onClickOutside() method called');
         this.props.clearHandler();
     }
     clickHandler = (feature: TAutoCompleteFeature) => {

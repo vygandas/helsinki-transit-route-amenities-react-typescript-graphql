@@ -26,7 +26,6 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
         super(props);
     }
     componentWillMount(): void {
-        console.log("this.props.match.params", this.props.match.params);
         if (this.props.selected === null) {
             this.props.setSelectedAddress({
                 address: this.props.match.params.address,
@@ -52,7 +51,6 @@ class AmenitiesPage extends React.Component<AmenitiesPageProps, AmenitiesPageSta
                                 {({ loading, error, data }) => {
                                     if (loading) return <div>Loading...</div>;
                                     if (error) return <div>Error :(</div>;
-                                    console.log("data", data.bikeParkings);
                                     return (
                                         <AmenitiesMapComponent
                                             address={this.props.selected}

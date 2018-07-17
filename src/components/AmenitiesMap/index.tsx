@@ -18,7 +18,6 @@ class AmenitiesMapComponent extends React.Component<AmenitiesMapComponentProps, 
     }
     
     render(): JSX.Element | null {
-        console.log("this.props.address!!!!!!!!!!", this.props.address);
         return (
             <div className="amenities-map-component">
                 <GoogleMapReact
